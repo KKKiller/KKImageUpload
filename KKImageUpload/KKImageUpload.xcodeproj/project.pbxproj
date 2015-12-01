@@ -15,6 +15,7 @@
 		F1B5ADC71C09A89400806E18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B5ADC51C09A89400806E18 /* LaunchScreen.storyboard */; };
 		F1B5ADD21C09A89400806E18 /* KKImageUploadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B5ADD11C09A89400806E18 /* KKImageUploadTests.m */; };
 		F1B5ADDD1C09A89500806E18 /* KKImageUploadUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B5ADDC1C09A89500806E18 /* KKImageUploadUITests.m */; };
+		F1E8FAB91C0C35470084617A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1E8FAB81C0C35470084617A /* AVFoundation.framework */; };
 		F1FD91B31C09A9D900B2D5EB /* DNAlbumTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FD918A1C09A9D900B2D5EB /* DNAlbumTableViewController.m */; };
 		F1FD91B41C09A9D900B2D5EB /* DNAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FD918C1C09A9D900B2D5EB /* DNAsset.m */; };
 		F1FD91B51C09A9D900B2D5EB /* DNImageFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FD918E1C09A9D900B2D5EB /* DNImageFlowViewController.m */; };
@@ -36,9 +37,9 @@
 		F1FD91C51C09A9D900B2D5EB /* DNUnAuthorizedTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FD91AD1C09A9D900B2D5EB /* DNUnAuthorizedTipsView.m */; };
 		F1FD91C61C09A9D900B2D5EB /* JKPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FD91AF1C09A9D900B2D5EB /* JKPromptView.m */; };
 		F1FD91C71C09A9D900B2D5EB /* MWTapDetectingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FD91B11C09A9D900B2D5EB /* MWTapDetectingImageView.m */; };
-		F1FD91CA1C09AA1000B2D5EB /* HFPhotoPickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FD91C91C09AA1000B2D5EB /* HFPhotoPickerManager.m */; };
+		F1FD91CA1C09AA1000B2D5EB /* KKPhotoPickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FD91C91C09AA1000B2D5EB /* KKPhotoPickerManager.m */; };
 		F1FD91D31C09AC1600B2D5EB /* KKUploadPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FD91D11C09AC1600B2D5EB /* KKUploadPhotoCollectionViewCell.m */; };
-		F1FD91D61C09AC5B00B2D5EB /* HFButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FD91D41C09AC5B00B2D5EB /* HFButton.m */; };
+		F1FD91D61C09AC5B00B2D5EB /* KKButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FD91D41C09AC5B00B2D5EB /* KKButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		F1B5ADD81C09A89500806E18 /* KKImageUploadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KKImageUploadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B5ADDC1C09A89500806E18 /* KKImageUploadUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKImageUploadUITests.m; sourceTree = "<group>"; };
 		F1B5ADDE1C09A89500806E18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1E8FAB81C0C35470084617A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F1FD91891C09A9D900B2D5EB /* DNAlbumTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNAlbumTableViewController.h; sourceTree = "<group>"; };
 		F1FD918A1C09A9D900B2D5EB /* DNAlbumTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNAlbumTableViewController.m; sourceTree = "<group>"; };
 		F1FD918B1C09A9D900B2D5EB /* DNAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNAsset.h; sourceTree = "<group>"; };
@@ -114,12 +116,12 @@
 		F1FD91B01C09A9D900B2D5EB /* MWTapDetectingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWTapDetectingImageView.h; sourceTree = "<group>"; };
 		F1FD91B11C09A9D900B2D5EB /* MWTapDetectingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWTapDetectingImageView.m; sourceTree = "<group>"; };
 		F1FD91B21C09A9D900B2D5EB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/DNImagePicker.strings"; sourceTree = "<group>"; };
-		F1FD91C81C09AA1000B2D5EB /* HFPhotoPickerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFPhotoPickerManager.h; sourceTree = "<group>"; };
-		F1FD91C91C09AA1000B2D5EB /* HFPhotoPickerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFPhotoPickerManager.m; sourceTree = "<group>"; };
+		F1FD91C81C09AA1000B2D5EB /* KKPhotoPickerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKPhotoPickerManager.h; path = ../KKPhotoPickerManager.h; sourceTree = "<group>"; };
+		F1FD91C91C09AA1000B2D5EB /* KKPhotoPickerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKPhotoPickerManager.m; path = ../KKPhotoPickerManager.m; sourceTree = "<group>"; };
 		F1FD91D11C09AC1600B2D5EB /* KKUploadPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKUploadPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		F1FD91D21C09AC1600B2D5EB /* KKUploadPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKUploadPhotoCollectionViewCell.h; sourceTree = "<group>"; };
-		F1FD91D41C09AC5B00B2D5EB /* HFButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFButton.m; sourceTree = "<group>"; };
-		F1FD91D51C09AC5B00B2D5EB /* HFButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFButton.h; sourceTree = "<group>"; };
+		F1FD91D41C09AC5B00B2D5EB /* KKButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKButton.m; sourceTree = "<group>"; };
+		F1FD91D51C09AC5B00B2D5EB /* KKButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKButton.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1E8FAB91C0C35470084617A /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +153,7 @@
 		F1B5ADAB1C09A89400806E18 = {
 			isa = PBXGroup;
 			children = (
+				F1E8FAB81C0C35470084617A /* AVFoundation.framework */,
 				F1B5ADB61C09A89400806E18 /* KKImageUpload */,
 				F1B5ADD01C09A89400806E18 /* KKImageUploadTests */,
 				F1B5ADDB1C09A89500806E18 /* KKImageUploadUITests */,
@@ -174,12 +178,10 @@
 				F1B5ADBB1C09A89400806E18 /* AppDelegate.m */,
 				F1B5ADBD1C09A89400806E18 /* ViewController.h */,
 				F1B5ADBE1C09A89400806E18 /* ViewController.m */,
-				F1FD91C81C09AA1000B2D5EB /* HFPhotoPickerManager.h */,
-				F1FD91C91C09AA1000B2D5EB /* HFPhotoPickerManager.m */,
 				F1FD91D11C09AC1600B2D5EB /* KKUploadPhotoCollectionViewCell.m */,
 				F1FD91D21C09AC1600B2D5EB /* KKUploadPhotoCollectionViewCell.h */,
-				F1FD91D41C09AC5B00B2D5EB /* HFButton.m */,
-				F1FD91D51C09AC5B00B2D5EB /* HFButton.h */,
+				F1FD91D51C09AC5B00B2D5EB /* KKButton.h */,
+				F1FD91D41C09AC5B00B2D5EB /* KKButton.m */,
 				F1FD91881C09A9D900B2D5EB /* DNImagePicker */,
 				F1B5ADB71C09A89400806E18 /* Supporting Files */,
 			);
@@ -219,6 +221,8 @@
 		F1FD91881C09A9D900B2D5EB /* DNImagePicker */ = {
 			isa = PBXGroup;
 			children = (
+				F1FD91C81C09AA1000B2D5EB /* KKPhotoPickerManager.h */,
+				F1FD91C91C09AA1000B2D5EB /* KKPhotoPickerManager.m */,
 				F1FD91891C09A9D900B2D5EB /* DNAlbumTableViewController.h */,
 				F1FD918A1C09A9D900B2D5EB /* DNAlbumTableViewController.m */,
 				F1FD918B1C09A9D900B2D5EB /* DNAsset.h */,
@@ -421,12 +425,12 @@
 				F1FD91C11C09A9D900B2D5EB /* DNBadgeLabel.m in Sources */,
 				F1FD91B31C09A9D900B2D5EB /* DNAlbumTableViewController.m in Sources */,
 				F1FD91BD1C09A9D900B2D5EB /* UIViewController+DNImagePicker.m in Sources */,
-				F1FD91CA1C09AA1000B2D5EB /* HFPhotoPickerManager.m in Sources */,
+				F1FD91CA1C09AA1000B2D5EB /* KKPhotoPickerManager.m in Sources */,
 				F1FD91B81C09A9D900B2D5EB /* DNPhotoBrowser.m in Sources */,
 				F1FD91D31C09AC1600B2D5EB /* KKUploadPhotoCollectionViewCell.m in Sources */,
 				F1FD91B61C09A9D900B2D5EB /* DNImagePickerController.m in Sources */,
 				F1FD91C61C09A9D900B2D5EB /* JKPromptView.m in Sources */,
-				F1FD91D61C09AC5B00B2D5EB /* HFButton.m in Sources */,
+				F1FD91D61C09AC5B00B2D5EB /* KKButton.m in Sources */,
 				F1FD91B41C09A9D900B2D5EB /* DNAsset.m in Sources */,
 				F1FD91BC1C09A9D900B2D5EB /* UIView+DNImagePicker.m in Sources */,
 				F1B5ADBC1C09A89400806E18 /* AppDelegate.m in Sources */,

@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "KKUploadPhotoCollectionViewCell.h"
-#import "HFPhotoPickerManager.h"
+#import "KKPhotoPickerManager.h"
 
 static NSString *collectionViewCellId = @"collectionViewCellId";
 static CGFloat imageSize = 80;
@@ -22,9 +22,15 @@ static CGFloat imageSize = 80;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(150, 200, 100, 20)];
+    label.text = @"图片上传";
+    [self.view addSubview:label];
+    
     [self setCollectionView];
-    self.view.backgroundColor = [UIColor purpleColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     self.imageArray = [NSMutableArray array];
+
 }
 
 #pragma mark  UICollectionView数据源方法
@@ -54,7 +60,7 @@ static CGFloat imageSize = 80;
     cell.backgroundColor = [UIColor whiteColor];
     imageView.image = [UIImage imageNamed:@"add"];
     
-    HFButton *cancleBtn = [[HFButton alloc]init];
+    KKButton *cancleBtn = [[KKButton alloc]init];
     cell.cancleBtn = cancleBtn;
     [cell.contentView addSubview: cancleBtn];
     [cancleBtn setImage:[UIImage imageNamed:@"remove"] forState:UIControlStateNormal];
@@ -74,11 +80,12 @@ static CGFloat imageSize = 80;
     cell.cancleBtn.indexPath = indexPath;
     [cell.cancleBtn addTarget:self action:@selector(cancleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
 }
+
 #pragma mark  collectionView代理方法,添加照片
 //点击collectionView跳转到相册
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if ([collectionView cellForItemAtIndexPath:indexPath].tag == 11) {
-        [[HFPhotoPickerManager shareInstace] showActionSheetInView:self.view fromController:self completionBlock:^(NSMutableArray *imageArray) {
+        [[KKPhotoPickerManager shareInstace] showActionSheetInView:self.view fromController:self completionBlock:^(NSMutableArray *imageArray) {
             [self.collectionView reloadData];
             for (int i = 0; i<imageArray.count; i++) {
                 if (self.imageArray.count < 4) {
@@ -91,7 +98,7 @@ static CGFloat imageSize = 80;
 }
 
 #pragma mark  删除图片
-- (void)cancleBtnClick:(HFButton *)sender{
+- (void)cancleBtnClick:(KKButton *)sender{
     if (sender.indexPath.row < self.imageArray.count) {
         if (self.imageArray[sender.indexPath.row] != nil) {
             [self.imageArray removeObjectAtIndex:sender.indexPath.row];
@@ -115,7 +122,7 @@ static CGFloat imageSize = 80;
     [self.collectionView registerClass:[KKUploadPhotoCollectionViewCell class] forCellWithReuseIdentifier:collectionViewCellId];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
-    self.collectionView.backgroundColor = [UIColor lightTextColor];
+    self.collectionView.backgroundColor = [UIColor whiteColor];
 
 }
 

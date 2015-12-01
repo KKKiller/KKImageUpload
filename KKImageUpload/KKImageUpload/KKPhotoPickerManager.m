@@ -6,11 +6,11 @@
 //  Copyright © 2015年 HeGuangTongChen. All rights reserved.
 //
 
-#import "HFPhotoPickerManager.h"
+#import "KKPhotoPickerManager.h"
 #import "DNImagePickerController.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "DNAsset.h"
-@interface HFPhotoPickerManager()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,DNImagePickerControllerDelegate>
+@interface KKPhotoPickerManager()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,DNImagePickerControllerDelegate>
 
 @property (nonatomic, weak) UIViewController *fromController;
 @property (nonatomic, copy) CompelitionBlock completionBlcok;
@@ -18,16 +18,18 @@
 @property(nonatomic, strong) NSArray *imageAsset;
 
 @end
-@implementation HFPhotoPickerManager
+@implementation KKPhotoPickerManager
+//单例
 + (instancetype)shareInstace {
     static dispatch_once_t once;
     static id sharedInstance;
     dispatch_once (&once, ^{
-        sharedInstance = [[HFPhotoPickerManager alloc] init];
+        sharedInstance = [[KKPhotoPickerManager alloc] init];
         [[NSNotificationCenter defaultCenter]addObserver:sharedInstance selector:@selector(callBackImageData:) name:@"finishedInvertImage" object:nil];
     });
     return sharedInstance;
 }
+//数据回调
 - (void)callBackImageData:(NSNotification *)noti{
     NSDictionary *dict = noti.userInfo;
     NSInteger num = [[dict valueForKey:@"number"] integerValue];
@@ -35,33 +37,32 @@
         self.completionBlcok(self.imageArray);
     }
 }
-
+//actionSheet提示
 - (void)showActionSheetInView:(UIView *)inView
                fromController:(UIViewController *)fromController
                    completionBlock:(CompelitionBlock)completionBlock{
     self.completionBlcok = [completionBlock copy];
     self.fromController = fromController;
 
-    UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"选择照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"从相册选取",@"拍照上传", nil];
-    [actionSheet showInView:inView];
-    return;
-}
-
-
-#pragma mark - UIActionSheetDelegate
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) { // 从相册选择
+    UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:@"选择照片" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *album = [UIAlertAction actionWithTitle:@"从相册选取" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {// 从相册选择
         if ([self isPhotoLibraryAvailable]) {
             DNImagePickerController *imagePicker = [[DNImagePickerController alloc] init];
             imagePicker.imagePickerDelegate = self;
             [self.fromController presentViewController:imagePicker animated:YES completion:nil];
         }
-    } else if (buttonIndex == 1) { // 拍照
+    }];
+    UIAlertAction *photo = [UIAlertAction actionWithTitle:@"拍照上传" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {// 拍照
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
         [self.fromController presentViewController:picker animated:YES completion:nil];
-    }
+    }];
+    UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:nil];
+    [alertVc addAction:album];
+    [alertVc addAction:photo];
+    [alertVc addAction:cancle];
+    [fromController presentViewController:alertVc animated:YES completion:nil];
     return;
 }
 
@@ -72,7 +73,6 @@
     __block UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     
     if (image && self.completionBlcok) {
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.imageArray removeAllObjects];
@@ -171,10 +171,14 @@
     return [UIImagePickerController isSourceTypeAvailable:
             UIImagePickerControllerSourceTypePhotoLibrary];
 }
-//- (BOOL)canTakePhoto {
-//
-//    return [self cameraSupportsMedia:(__bridge NSString *)kUTTypeImage sourceType:UIImagePickerControllerSourceTypeCamera];
-//}
+- (BOOL)canTakePhoto {
+    BOOL result = YES;
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if (authStatus == AVAuthorizationStatusRestricted || authStatus == AVAuthorizationStatusDenied) {
+        result = NO;
+    }
+    return result;
+}
 - (BOOL) cameraSupportsMedia:(NSString *)paramMediaType sourceType:(UIImagePickerControllerSourceType)paramSourceType{
     __block BOOL result = NO;
     if ([paramMediaType length] == 0) {

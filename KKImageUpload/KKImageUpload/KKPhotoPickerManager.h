@@ -18,4 +18,6 @@ typedef void (^CompelitionBlock)(NSMutableArray *imageArray);
 - (void)showActionSheetInView:(UIView *)inView
                fromController:(UIViewController *)fromController
               completionBlock:(CompelitionBlock)completionBlock;
+
+//修改图片张数限制,全局搜kDNImageFlowMaxSeletedNumber修改即可.
 @end
